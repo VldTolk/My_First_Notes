@@ -5,16 +5,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
-import androidx.lifecycle.LifecycleOwner;
 
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.Note;
-import com.example.myfirstnotes.main.ui.MainActivity;
-import com.example.myfirstnotes.main.ui.list.NotesListFragment;
 
 public class ToWriteNoteFragment extends Fragment {
 
@@ -44,9 +40,9 @@ public class ToWriteNoteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         TextView noteName = view.findViewById(R.id.to_write_note_name);
-        TextView dateNote = view.findViewById(R.id.date);
-        TextView categoryNote = view.findViewById(R.id.categories);
-        TextView textNote = view.findViewById(R.id.text_note);
+        TextView dateNote = view.findViewById(R.id.to_write_note_date);
+        TextView categoryNote = view.findViewById(R.id.to_write_note_categories);
+        TextView textNote = view.findViewById(R.id.to_write_note_text);
 
         if (getArguments() != null && getArguments().containsKey(ARG_NOTE)) {
 

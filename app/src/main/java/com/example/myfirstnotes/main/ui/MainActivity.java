@@ -1,5 +1,6 @@
 package com.example.myfirstnotes.main.ui;
 
+import androidx.annotation.BoolRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -17,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String ARG_NOTE = "ARG_NOTE";
 
-    Note selectedNote;
-    ToWriteNoteFragment toWriteNoteFragment;
+    private Note selectedNote;
+    private ToWriteNoteFragment toWriteNoteFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
