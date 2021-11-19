@@ -1,13 +1,11 @@
 package com.example.myfirstnotes.main.ui;
 
-import androidx.annotation.BoolRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.Note;
@@ -17,6 +15,8 @@ import com.example.myfirstnotes.main.ui.list.NotesListFragment;
 public class MainActivity extends AppCompatActivity {
 
     private static final String ARG_NOTE = "ARG_NOTE";
+    public static final String ARG_NOTE_WRITTEN = "ARG_NOTE_WRITTEN";
+    public static final String ARG_TO_WRITE_NOTE = "ARG_TO_WRITE_NOTE";
 
     private Note selectedNote;
     private ToWriteNoteFragment toWriteNoteFragment;
@@ -28,23 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        boolean isLandscape = getResources().getBoolean(R.bool.is_landscape);
 
-        if (!(fragmentManager.findFragmentById(R.id.fragment_container) instanceof NotesListFragment)){
-            fragmentManager.popBackStack();
-        }
-
-        if (savedInstanceState != null && savedInstanceState.containsKey(ARG_NOTE)) {
-            if (isLandscape) {
-                selectedNote = savedInstanceState.getParcelable(ARG_NOTE);
-                toWriteNoteFragment = ToWriteNoteFragment.newInstance(selectedNote);
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_to_write_note_container, toWriteNoteFragment)
-                        .commit();
-            }
-        }
-
-        getSupportFragmentManager().setFragmentResultListener(NotesListFragment.KEY_NOTES_LIST_ACTIVITY, this, new FragmentResultListener() {
+        fragmentManager.setFragmentResultListener(NotesListFragment.KEY_NOTES_LIST_ACTIVITY, this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
 
@@ -52,16 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
                 toWriteNoteFragment = ToWriteNoteFragment.newInstance(selectedNote);
 
-                if(isLandscape){
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.fragment_to_write_note_container, toWriteNoteFragment)
-                            .commit();
-                } else {
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container, toWriteNoteFragment)
-                            .addToBackStack(null)
-                            .commit();
-                }
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, toWriteNoteFragment)
+                        .addToBackStack(null)
+                        .commit();
+
             }
         });
     }

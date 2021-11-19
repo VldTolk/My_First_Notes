@@ -5,16 +5,22 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
 
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.Note;
+import com.example.myfirstnotes.main.ui.MainActivity;
+import com.example.myfirstnotes.main.ui.list.NotesListFragment;
 
 public class ToWriteNoteFragment extends Fragment {
 
     public static final String ARG_NOTE = "ARG_NOTE";
+
+    private Note selectedNote;
 
     public ToWriteNoteFragment() {
         super(R.layout.fragment_to_write_note);
