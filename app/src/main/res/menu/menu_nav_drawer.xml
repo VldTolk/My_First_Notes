@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/all_notes"
+        android:title="@string/all_notes"/>
+
+    <item
+        android:id="@+id/favorites"
+        android:title="@string/favorites"/>
+
+    <item
+        android:id="@+id/categories"
+        android:title="@string/categories"/>
+
+    <item
+        android:id="@+id/action_settings_nav"
+        android:title="@string/action_settings" />
+</menu>
