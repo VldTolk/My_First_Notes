@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="2">
+
+        <ImageView
+            android:id="@+id/image_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:contentDescription="@string/cancel"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+        <ImageView
+            android:id="@+id/image_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:contentDescription="@string/cancel"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+        <ImageView
+            android:id="@+id/image_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:contentDescription="@string/cancel"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+        <ImageView
+            android:id="@+id/image_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:contentDescription="@string/cancel"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+    </GridLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sheet_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/default_margin"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/purple_700"/>
+
+</LinearLayout>

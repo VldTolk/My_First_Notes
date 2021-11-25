@@ -1,10 +1,18 @@
 package com.example.myfirstnotes.main.ui.details;
 
+import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationChannelCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
@@ -16,13 +24,18 @@ import android.widget.Toast;
 
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.Note;
+import com.example.myfirstnotes.main.ui.AttachBottomSheetFragment;
 import com.example.myfirstnotes.main.ui.MainActivity;
 import com.example.myfirstnotes.main.ui.ToolbarNavDrawer;
 import com.example.myfirstnotes.main.ui.list.NotesListFragment;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import java.util.Objects;
 
 public class ToWriteNoteFragment extends Fragment {
 
     public static final String ARG_NOTE = "ARG_NOTE";
+    public static final String SHARE_CHANNEL = "SHARE_CHANNEL";
 
     private Note selectedNote;
 
@@ -49,9 +62,16 @@ public class ToWriteNoteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        NotificationChannelCompat notificationChannelCompat = new NotificationChannelCompat.Builder(SHARE_CHANNEL, NotificationManagerCompat.IMPORTANCE_DEFAULT)
+                .setName("Share_channel")
+                .setDescription("Description")
+                .build();
+
+        NotificationManagerCompat.from(requireContext()).createNotificationChannel(notificationChannelCompat);
+
         Toolbar toolbar = view.findViewById(R.id.toolbar_to_write_note);
 
-        if (getActivity() instanceof ToolbarNavDrawer){
+        if (getActivity() instanceof ToolbarNavDrawer) {
             ToolbarNavDrawer drawer = (ToolbarNavDrawer) getActivity();
             drawer.setToolbar(toolbar);
         }
@@ -60,10 +80,18 @@ public class ToWriteNoteFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_share) {
-                    Toast.makeText(requireContext(), "share", Toast.LENGTH_SHORT).show();
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), SHARE_CHANNEL);
+
+                    builder.setContentTitle("Ты успешно поделился заметкой!")
+                            .setContentText("Возьми с полки пирожок")
+                            .setSmallIcon(R.drawable.ic_share);
+
+                    NotificationManagerCompat.from(requireContext()).notify(1, builder.build());
+
                     return true;
                 } else if (item.getItemId() == R.id.action_attach) {
-                    Toast.makeText(requireContext(), "attach", Toast.LENGTH_SHORT).show();
+                    AttachBottomSheetFragment fragment = AttachBottomSheetFragment.newInstance();
+                    fragment.show(getParentFragmentManager(), AttachBottomSheetFragment.TAG);
                     return true;
                 } else {
                     return false;
