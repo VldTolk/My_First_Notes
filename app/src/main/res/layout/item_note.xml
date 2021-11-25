@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin"
+    android:background="#D8D7D7"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/note_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/note_category"
+        android:textStyle="bold"
+        android:text="@string/recipes"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+    <TextView
+        android:id="@+id/note_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/note_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/date_recipes"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"/>
+
+    <TextView
+        android:id="@+id/note_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/note_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/category_casual"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:gravity="end"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

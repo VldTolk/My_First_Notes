@@ -1,3 +1,21 @@
-<resources>
-    <string name="app_name">My First Notes</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Заметки</string>
+    <string name="plus">+</string>
+
+    <string name="passwords">Пароли</string>
+    <string name="text_passwords">sdjogsiod</string>
+    <string name="category_security">Безопасность</string>
+    <string name="date_passwords">21.12.21</string>
+
+    <string name="recipes">Рецепты</string>
+    <string name="text_recipes">x;ojfwl</string>
+    <string name="category_casual">Повседневное</string>
+    <string name="date_recipes">21.04.20</string>
+
+    <string name="cities">Города</string>
+    <string name="text_cities">dlivjanoe</string>
+    <string name="category_travels">Путешествия</string>
+    <string name="date_cities">03.03.03</string>
+    <string name="enter_note_name">Название</string>
+    <string name="enter_note_category">Категория</string>
 </resources>
