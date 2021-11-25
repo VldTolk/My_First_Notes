@@ -12,41 +12,47 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/enter_note_name"
+        android:layout_margin="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/date"
+        app:layout_constraintEnd_toStartOf="@id/to_write_note_date"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/categories"
+        app:layout_constraintBottom_toTopOf="@id/to_write_note_categories"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
     <TextView
-        android:id="@+id/categories"
+        android:id="@+id/to_write_note_categories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
         app:layout_constraintTop_toBottomOf="@id/to_write_note_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/date"
-        app:layout_constraintBottom_toTopOf="@id/text_note"
+        app:layout_constraintEnd_toStartOf="@id/to_write_note_date"
+        app:layout_constraintBottom_toTopOf="@id/to_write_note_text"
         android:hint="@string/enter_note_category"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"/>
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/to_write_note_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
-        app:layout_constraintBottom_toTopOf="@+id/text_note"
+        android:gravity="end"
+        android:layout_margin="@dimen/default_margin"
+        app:layout_constraintBottom_toTopOf="@+id/to_write_note_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/categories"
+        app:layout_constraintStart_toEndOf="@id/to_write_note_categories"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_note"
+        android:id="@+id/to_write_note_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/date"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_write_note_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
