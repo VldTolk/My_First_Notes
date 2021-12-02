@@ -11,12 +11,15 @@ import androidx.fragment.app.FragmentResultListener;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.Note;
 import com.example.myfirstnotes.main.ui.details.ToWriteNoteFragment;
 import com.example.myfirstnotes.main.ui.list.NotesListFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements ToolbarNavDrawer {
 
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements ToolbarNavDrawer 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.all_notes) {
+                    getSupportFragmentManager().popBackStack();
                     getSupportFragmentManager().
                             beginTransaction().
                             replace(R.id.fragment_container, new NotesListFragment()).
@@ -65,9 +69,11 @@ public class MainActivity extends AppCompatActivity implements ToolbarNavDrawer 
                     return true;
                 }
                 if (item.getItemId() == R.id.action_settings_nav) {
+                    getSupportFragmentManager().popBackStack();
                     getSupportFragmentManager().
                             beginTransaction().
                             replace(R.id.fragment_container, new SettingsFragment()).
+                            addToBackStack(null).
                             commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                     return true;
@@ -84,6 +90,34 @@ public class MainActivity extends AppCompatActivity implements ToolbarNavDrawer 
                 R.string.drawer_oren, R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (findViewById(R.id.container_list) != null) {
+            Snackbar.make(findViewById(R.id.container_list), R.string.are_you_sure, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.yes, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            MainActivity.super.onBackPressed();
+                        }
+                    })
+/*                    .setAction(R.string.no, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })*/
+                    .show();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        Toast.makeText(this, R.string.app_close, Toast.LENGTH_SHORT).show();
+        super.onDestroy();
     }
 
     @Override

@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/default_margin"
     android:background="#D8D7D7"
-    android:layout_marginBottom="@dimen/default_margin"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginHorizontal="@dimen/default_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
