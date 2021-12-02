@@ -14,4 +14,14 @@
         android:icon="@drawable/ic_settings"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_sort_list"
+        android:title="@string/action_sort_list"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_sort_grid"
+        android:title="@string/action_sort_grid"
+        app:showAsAction="ifRoom" />
+
 </menu>
