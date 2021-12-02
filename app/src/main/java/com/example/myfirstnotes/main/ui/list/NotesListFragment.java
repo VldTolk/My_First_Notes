@@ -18,8 +18,10 @@ import android.widget.Toast;
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.InMemoryNotesRepository;
 import com.example.myfirstnotes.main.domain.Note;
+import com.example.myfirstnotes.main.ui.AddNoteDialogFragment;
 import com.example.myfirstnotes.main.ui.SettingsFragment;
 import com.example.myfirstnotes.main.ui.ToolbarNavDrawer;
+import com.example.myfirstnotes.main.ui.details.ToWriteNoteFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -69,10 +71,13 @@ public class NotesListFragment extends Fragment implements NotesListView {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_add) {
-                    Toast.makeText(requireContext(), "Add", Toast.LENGTH_SHORT).show();
+                    AddNoteDialogFragment.newInstance().show(getParentFragmentManager(), AddNoteDialogFragment.TAG);
                     return true;
                 } else if (item.getItemId() == R.id.action_settings) {
-                    Toast.makeText(requireContext(), "Settings", Toast.LENGTH_SHORT).show();
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new SettingsFragment())
+                            .addToBackStack(null)
+                            .commit();
                     return true;
                 } else {
                     return false;
@@ -85,6 +90,8 @@ public class NotesListFragment extends Fragment implements NotesListView {
         presenter.requestNotes();
 
     }
+
+
 
     @Override
     public void showNotes(List<Note> notes) {

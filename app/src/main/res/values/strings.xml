@@ -32,4 +32,13 @@
     <string name="settings_will_be_here">Здесь будут настройки</string>
     <string name="drawer_oren">open</string>
     <string name="drawer_close">close</string>
+    <string name="are_you_sure">Вы уверены, что хотите выйти?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="enter_note_date">Дата создания</string>
+    <string name="add_dialog_title">Создание заметки</string>
+    <string name="add_positive_button">Создать</string>
+    <string name="cancel">Отмена</string>
+    <string name="share_notification_title">Вы успешно поделились заметкой!</string>
+    <string name="app_close">Приложение \"Заметки\" закрыто!</string>
 </resources>
