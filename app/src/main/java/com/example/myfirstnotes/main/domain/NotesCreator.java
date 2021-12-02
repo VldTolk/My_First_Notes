@@ -5,19 +5,19 @@ import com.example.myfirstnotes.main.ui.details.ToWriteNoteFragment;
 
 public class NotesCreator {
 
-    public String createName(String name){
-     return name;
+    public String createName(String name) {
+        return name;
     }
 
-    public String createCategory(String category){
+    public String createCategory(String category) {
         return category;
     }
 
-    public String createDate(){
+    public String createDate() {
         return null;
     }
 
-    public String createText(String text){
+    public String createText(String text) {
         return text;
     }
 

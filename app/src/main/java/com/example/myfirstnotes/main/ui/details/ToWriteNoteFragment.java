@@ -77,11 +77,14 @@ public class ToWriteNoteFragment extends Fragment {
         }
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_share) {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), SHARE_CHANNEL);
 
+
+// просит CharSequence, я не понимаю, как строковый ресурс сделать такого формата
                     builder.setContentTitle("Ты успешно поделился заметкой!")
                             .setContentText("Возьми с полки пирожок")
                             .setSmallIcon(R.drawable.ic_share);
