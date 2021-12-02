@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toStartOf="@id/note_category"
         android:textStyle="bold"
         android:text="@string/recipes"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"/>
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
 
     <TextView
         android:id="@+id/note_date"

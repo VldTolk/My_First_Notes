@@ -4,16 +4,20 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.Note;
 import com.example.myfirstnotes.main.ui.MainActivity;
+import com.example.myfirstnotes.main.ui.ToolbarNavDrawer;
 import com.example.myfirstnotes.main.ui.list.NotesListFragment;
 
 public class ToWriteNoteFragment extends Fragment {
@@ -44,6 +48,28 @@ public class ToWriteNoteFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar_to_write_note);
+
+        if (getActivity() instanceof ToolbarNavDrawer){
+            ToolbarNavDrawer drawer = (ToolbarNavDrawer) getActivity();
+            drawer.setToolbar(toolbar);
+        }
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.action_share) {
+                    Toast.makeText(requireContext(), "share", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (item.getItemId() == R.id.action_attach) {
+                    Toast.makeText(requireContext(), "attach", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
 
         TextView noteName = view.findViewById(R.id.to_write_note_name);
         TextView dateNote = view.findViewById(R.id.to_write_note_date);

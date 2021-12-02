@@ -4,20 +4,23 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myfirstnotes.R;
 import com.example.myfirstnotes.main.domain.InMemoryNotesRepository;
 import com.example.myfirstnotes.main.domain.Note;
-import com.example.myfirstnotes.main.ui.details.ToWriteNoteFragment;
-import com.example.myfirstnotes.main.ui.list.NotesListPresenter;
-import com.example.myfirstnotes.main.ui.list.NotesListView;
+import com.example.myfirstnotes.main.ui.SettingsFragment;
+import com.example.myfirstnotes.main.ui.ToolbarNavDrawer;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -54,6 +57,28 @@ public class NotesListFragment extends Fragment implements NotesListView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar_list);
+
+        if (getActivity() instanceof ToolbarNavDrawer){
+            ToolbarNavDrawer drawer = (ToolbarNavDrawer) getActivity();
+            drawer.setToolbar(toolbar);
+        }
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.action_add) {
+                    Toast.makeText(requireContext(), "Add", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (item.getItemId() == R.id.action_settings) {
+                    Toast.makeText(requireContext(), "Settings", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
 
         notesListRoot = view.findViewById(R.id.notes_root);
 
